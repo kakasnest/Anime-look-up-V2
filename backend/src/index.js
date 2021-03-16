@@ -1,48 +1,30 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import dotenv from 'dotenv'
-import mongoose from 'mongoose'
+//NPM module imports
+import express from "express";
+import cors from "cors";
 
-import api from './routes/api.js'
+//Filesystem imports
+import connectToDB from "./utils/db_connection.js";
+import userRouter from "./routes/user.js";
+import postRouter from "./routes/post.js";
 
-dotenv.config()
+const app = express();
 
-const app = express()
+//Middlewares
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use((err, _req, res, next) => {
+  res.status(500).json({ message: err });
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+  next();
+});
 
-app.use('/api', api)
+//Routes
+app.use("/user", userRouter);
+app.use("/posts", postRouter);
 
-const { DB_USER, DB_PASSWORD, DB_URL, DB_NAME, PORT } = process.env
+connectToDB();
 
-const initDB = async () => {
-  mongoose.connect(
-    `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URL}?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-      dbName: DB_NAME,
-    }
-  )
-
-  mongoose.connection
-    .once('open', () => {
-      console.info('Connected to MongoDB')
-    })
-    .on('error', (error) => {
-      console.error('MongoDB connection error: ', error)
-    })
-}
-
-initDB()
-
-app.use((err, req, res, next) => {
-  res.status(500).json({ message: err })
-})
-
-app.listen(PORT, () => {
-  console.info(`Server listening on localhost:${PORT}`)
-})
+app.listen(process.env.PORT, () => {
+  console.log(`\nServer listening on localhost: ${process.env.PORT}`);
+});
