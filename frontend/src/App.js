@@ -1,42 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-import logo from './logo.svg'
-import './App.css'
+import logo from "./logo.svg";
 
 const App = () => {
-  const [connected, setConnected] = useState(false)
-  const [error, setError] = useState()
+  const [connected, setConnected] = useState(false);
+  const [error, setError] = useState();
 
   useEffect(() => {
     const getData = async () => {
       try {
         const {
           data: { connection },
-        } = await axios.get('/api/heartbeat')
-        setConnected(connection)
+        } = await axios.get("/api/heartbeat");
+        setConnected(connection);
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
       }
-    }
-    getData()
-  }, [])
+    };
+    getData();
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         {error ? (
-          <p style={{ color: 'red' }}>{error}</p>
+          <p style={{ color: "red" }}>{error}</p>
         ) : (
           <p>
             Connection to backend: <br />
-            {connected ? 'OK' : 'Loading'}
+            {connected ? "OK" : "Loading"}
           </p>
         )}
       </header>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

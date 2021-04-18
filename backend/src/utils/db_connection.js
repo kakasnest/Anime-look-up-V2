@@ -11,6 +11,7 @@ const DB_URL_str = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.wzgvd.mongo
 
 const connectToDB = async () => {
   mongoose.connect(DB_URL_str, {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
