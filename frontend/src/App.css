@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: ghostwhite;
+  background-color: rgb(9, 9, 34);
+}
+
+/* <NavBar /> */
+.Header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 2%;
+  background-color: ghostwhite;
+}
+
+.Header * {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+  display: inline;
+  padding: 0px 20px;
+  color: rgb(5, 18, 63);
+  background-color: ghostwhite;
+}
+
+.Logo {
+  font-size: 32px;
+  margin-right: auto;
+}
+
+.NavBar *:hover {
+  color: #0088a9;
+}
+
+.Login {
+  border: none;
+  border-radius: 50px;
+  background: rgba(0, 136, 169, 1);
+  transition: all 0.3s ease 0s;
+  padding: 9px 25px;
+  color: ghostwhite;
+  margin-left: 20px;
+}
+
+.Login:hover {
+  background: rgba(0, 136, 169, 0.75);
+}
+
+/* <Container /> */
+.Loading {
+  width: 200px;
+  height: 200px;
+  border: 16px solid rgb(255, 255, 255);
+  border-top: 16px solid #0088a9;
+  border-radius: 100%;
+  animation: spin 1.5s infinite;
+  position: absolute;
+  top: 42%;
+  left: 42%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,39 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
-import logo from "./logo.svg";
+import NavBar from "./views/Navbar.js";
+import Container from "./views/Container.js";
+
+import "./App.css";
 
 const App = () => {
-  const [connected, setConnected] = useState(false);
-  const [error, setError] = useState();
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const {
-          data: { connection },
-        } = await axios.get("/api/heartbeat");
-        setConnected(connection);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-    getData();
-  }, []);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {error ? (
-          <p style={{ color: "red" }}>{error}</p>
-        ) : (
-          <p>
-            Connection to backend: <br />
-            {connected ? "OK" : "Loading"}
-          </p>
-        )}
-      </header>
+      <NavBar />
+      <Container />
     </div>
   );
 };

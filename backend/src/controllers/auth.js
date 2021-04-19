@@ -32,7 +32,7 @@ export const login = async (req, res, next) => {
         expiresIn: "7d",
       });
       res.cookie("auth", token, { httpOnly: true });
-      res.status(200).json({ Message: "ok" });
+      res.status(200).json({ Message: "Login successful" });
     }
   }
 };
