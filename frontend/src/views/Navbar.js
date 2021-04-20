@@ -1,10 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import useUser from "../hooks/useUser.js";
+
 const NavBar = () => {
+  const { isAuthenticated } = useUser();
+
   return (
     <div className="Header">
-      <NavLink to="/login" className="Logo">
+      <NavLink to="/" className="Logo">
         Anime-Look-Up 2.0
       </NavLink>
       <div className="NavBar">
@@ -18,9 +22,15 @@ const NavBar = () => {
           Home
         </NavLink>
       </div>
-      <NavLink to="/login" className="Login">
-        Login / Register
-      </NavLink>
+      {!isAuthenticated ? (
+        <NavLink to="/login" className="Login-Profile">
+          Login / Register
+        </NavLink>
+      ) : (
+        <NavLink to="/profile" className="Login-Profile">
+          Profile
+        </NavLink>
+      )}
     </div>
   );
 };

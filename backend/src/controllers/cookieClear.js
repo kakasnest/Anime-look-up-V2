@@ -1,6 +1,6 @@
 const cookieClear = async (req, res) => {
   res.clearCookie("auth");
-  res.json({ message: "Successfully logged out" });
+  res.json({ message: "success" });
 };
 
 export default cookieClear;

@@ -4,16 +4,17 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { TOKEN_SECRET } from "../middlewares/authMW.js";
 
-export const register = async (req, res, next) => {
+export const register = async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
 
   if (user) {
-    next("User exists");
+    res.status(200).json({ message: "Username already in use" });
   } else {
     const hashed = await bcrypt.hash(password, 10);
-    const createdUser = await User.create({ username, password: hashed });
-    res.status(201).json({ id: createdUser._id });
+    User.create({ username, password: hashed }).then(
+      res.status(201).json({ message: "success" })
+    );
   }
 };
 
@@ -22,17 +23,17 @@ export const login = async (req, res, next) => {
   const user = await User.findOne({ username }).select("+password");
 
   if (!user) {
-    next("No such user");
+    res.status(200).json({ message: "No such user" });
   } else {
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      next("Wrong password");
+      res.status(200).json({ message: "Wrong password" });
     } else {
       const token = jwt.sign({ userId: user._id }, TOKEN_SECRET, {
         expiresIn: "7d",
       });
       res.cookie("auth", token, { httpOnly: true });
-      res.status(200).json({ Message: "Login successful" });
+      res.status(202).json({ message: "success" });
     }
   }
 };

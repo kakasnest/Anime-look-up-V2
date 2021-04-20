@@ -15,6 +15,6 @@ router.route("/").get(heartbeat);
 router.route("/csrf-protection").get(csrfProtection);
 
 //Deletes
-router.route("/cookieClear").delete(cookieClear);
+router.route("/cookieclear").delete(cookieClear);
 
 export default router;
