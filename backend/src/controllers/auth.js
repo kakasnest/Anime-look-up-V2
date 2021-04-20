@@ -30,7 +30,7 @@ export const login = async (req, res, next) => {
       res.status(200).json({ message: "Wrong password" });
     } else {
       const token = jwt.sign({ userId: user._id }, TOKEN_SECRET, {
-        expiresIn: "7d",
+        expiresIn: "1m",
       });
       res.cookie("auth", token, { httpOnly: true });
       res.status(202).json({ message: "success" });

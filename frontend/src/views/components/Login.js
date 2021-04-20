@@ -12,7 +12,7 @@ const Login = () => {
     password,
   };
   const [responseMessage, setResponseMessage] = useState("");
-  const { setAuthenticated } = useUser();
+  const { login } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const Login = () => {
         data: { message },
       } = await axios.post("/api/login", user);
       setResponseMessage(message);
-      if (message === "success") setAuthenticated(true);
+      if (message === "success") login();
     } catch (err) {
       console.log(err.message);
     }

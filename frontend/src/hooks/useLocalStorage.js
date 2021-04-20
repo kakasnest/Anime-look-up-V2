@@ -6,16 +6,10 @@ const useLocalStorage = (key, initialValue) => {
   );
 
   useEffect(() => {
-    if (values) {
-      window.localStorage.setItem(key, JSON.stringify(values));
-    }
+    window.localStorage.setItem(key, JSON.stringify(values));
   }, [values, key]);
 
-  const deleteValue = (value) => {
-    setValue(values.filter((storedValue) => value !== storedValue));
-  };
-
-  return { values, setValue, deleteValue };
+  return { values, setValue };
 };
 
 export default useLocalStorage;

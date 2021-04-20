@@ -1,22 +1,14 @@
 import React from "react";
-import axios from "axios";
+
+import useUser from "../../hooks/useUser.js";
 
 const Profile = () => {
-  const handleLogout = async () => {
-    try {
-      const {
-        data: { message },
-      } = await axios.delete("api/cookieclear");
-      console.log(message);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  const { logout } = useUser();
 
   return (
     <div>
       hello
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 };

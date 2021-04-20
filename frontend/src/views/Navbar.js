@@ -15,20 +15,24 @@ const NavBar = () => {
         <NavLink to="/" className="Navigation">
           Home
         </NavLink>
-        <NavLink to="/" className="Navigation">
-          Home
+        <NavLink to="/posts" className="Navigation">
+          Posts
         </NavLink>
-        <NavLink to="/" className="Navigation">
-          Home
-        </NavLink>
+        {isAuthenticated ? (
+          <NavLink to="/myposts" className="Navigation">
+            My Posts
+          </NavLink>
+        ) : (
+          ""
+        )}
       </div>
-      {!isAuthenticated ? (
-        <NavLink to="/login" className="Login-Profile">
-          Login / Register
-        </NavLink>
-      ) : (
+      {isAuthenticated ? (
         <NavLink to="/profile" className="Login-Profile">
           Profile
+        </NavLink>
+      ) : (
+        <NavLink to="/login" className="Login-Profile">
+          Login / Register
         </NavLink>
       )}
     </div>

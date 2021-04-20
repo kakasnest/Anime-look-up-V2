@@ -7,6 +7,7 @@ const Home = React.lazy(() => import("./components/Home.js"));
 const Login = React.lazy(() => import("./components/Login.js"));
 const Register = React.lazy(() => import("./components/Register.js"));
 const Profile = React.lazy(() => import("./components/Profile.js"));
+const Posts = React.lazy(() => import("./components/Posts.js"));
 
 const Container = () => {
   const { isAuthenticated } = useUser();
@@ -19,14 +20,14 @@ const Container = () => {
         </Route>
         <Route exact path="/login">
           {isAuthenticated ? (
-            <Redirect to="/profile" path="/login" />
+            <Redirect to="/profile" exact path="/login" />
           ) : (
             <Login />
           )}
         </Route>
         <Route exact path="/register">
           {isAuthenticated ? (
-            <Redirect to="/profile" path="/register" />
+            <Redirect to="/profile" exact path="/register" />
           ) : (
             <Register />
           )}
@@ -35,8 +36,11 @@ const Container = () => {
           {isAuthenticated ? (
             <Profile />
           ) : (
-            <Redirect to="/login" path="/profile" />
+            <Redirect to="/login" exact path="/profile" />
           )}
+        </Route>
+        <Route exact path="/posts">
+          <Posts />
         </Route>
         <Redirect to="/" path="*" />
       </Switch>
