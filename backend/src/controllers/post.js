@@ -29,8 +29,13 @@ export const getUserPosts = async (req, res) => {
 };
 
 export const editPost = async (req, res) => {
+  const data = req.body;
+
   try {
-    const editedPost = await Post.findByIdAndUpdate({ _id: req.params.postID });
+    const editedPost = await Post.findByIdAndUpdate(
+      { _id: req.params.postID },
+      data
+    );
     res.status(200).json(editedPost);
   } catch (err) {
     res.status(500).json({ message: err.message });
