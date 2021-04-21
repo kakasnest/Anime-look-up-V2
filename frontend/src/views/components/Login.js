@@ -21,7 +21,7 @@ const Login = () => {
         data: { message },
       } = await axios.post("/api/login", user);
       setResponseMessage(message);
-      if (message === "success") login();
+      if (message === "Login successful") login();
     } catch (err) {
       console.log(err.message);
     }
@@ -57,7 +57,7 @@ const Login = () => {
       </div>
       <button>Login</button>
       <NavLink to="/register">Not a member yet? Register here</NavLink>
-      {responseMessage === "success" ? "" : responseMessage}
+      {responseMessage}
     </form>
   );
 };

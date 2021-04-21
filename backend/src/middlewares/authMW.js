@@ -7,7 +7,7 @@ const authMW = async (req, res, next) => {
 
   try {
     const { userId } = jwt.verify(token, TOKEN_SECRET);
-    req.userId = userId;
+    req.user = userId;
     next();
   } catch (error) {
     next(error);

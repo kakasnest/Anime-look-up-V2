@@ -6,8 +6,8 @@ import { config } from "dotenv";
 config();
 
 //DB credentials
-const { DB_NAME, DB_PASSWORD, DB_USER } = process.env;
-const DB_URL_str = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.wzgvd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const { DB_NAME, DB_PASSWORD, DB_USER, DB_URL } = process.env;
+const DB_URL_str = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URL}?retryWrites=true&w=majority`;
 
 const connectToDB = async () => {
   mongoose.connect(DB_URL_str, {

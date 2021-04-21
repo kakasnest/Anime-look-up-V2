@@ -27,11 +27,11 @@ const NavBar = () => {
         )}
       </div>
       {isAuthenticated ? (
-        <NavLink to="/profile" className="Login-Profile">
+        <NavLink to="/profile" className="Profile-Button">
           Profile
         </NavLink>
       ) : (
-        <NavLink to="/login" className="Login-Profile">
+        <NavLink to="/login" className="Profile-Button">
           Login / Register
         </NavLink>
       )}

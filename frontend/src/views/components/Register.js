@@ -17,11 +17,7 @@ const Register = () => {
       const {
         data: { message },
       } = await axios.post("/api/register", user);
-      if (message === "success") {
-        setResponseMessage("User successfully created!");
-        setUsername("");
-        setPassword("");
-      }
+      setResponseMessage(message);
     } catch (err) {
       console.log(err.message);
     }
@@ -34,6 +30,10 @@ const Register = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
+
+  if (responseMessage === "Registration complete") {
+    return <div>Registration complete</div>;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -57,7 +57,7 @@ const Register = () => {
       </div>
       <button>Register</button>
       <NavLink to="/login">A member already? Login here</NavLink>
-      {responseMessage === "success" ? "" : responseMessage}
+      {responseMessage}
     </form>
   );
 };

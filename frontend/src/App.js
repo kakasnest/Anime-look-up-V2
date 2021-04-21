@@ -1,35 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 import NavBar from "./views/Navbar.js";
 import Container from "./views/Container.js";
-import { UserProvider } from "./utils/UserContext.js";
+import useUser from "./hooks/useUser.js";
 
 import "./App.css";
 
 const App = () => {
-  const [initialized, setInitialized] = useState(false);
+  const { logout } = useUser();
 
   const getCsrfProtection = async () => {
-    const {
-      data: { csrfToken },
-    } = await axios.get("/api/csrf-protection");
+    try {
+      const {
+        data: { csrfToken },
+      } = await axios.get("/api/csrf-protection");
 
-    axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
+      axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const checkCookie = async () => {
+    try {
+      const {
+        data: { message },
+      } = await axios.get("/api/isuserloggedin");
+    } catch (err) {
+      console.log(err.message);
+      logout();
+    }
   };
 
   useEffect(() => {
-    if (!initialized) {
-      getCsrfProtection();
-      setInitialized(true);
-    }
+    getCsrfProtection();
+    checkCookie();
   }, []);
 
   return (
-    <UserProvider>
+    <div className="App">
       <NavBar />
       <Container />
-    </UserProvider>
+    </div>
   );
 };
 

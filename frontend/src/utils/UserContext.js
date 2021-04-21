@@ -12,9 +12,17 @@ export const UserProvider = (props) => {
     setValue(true);
   };
 
-  const logout = () => {
+  const logout = async () => {
     setValue(false);
-    if (true) axios.delete("api/cookieclear");
+    try {
+      if (values) {
+        const {
+          data: { message },
+        } = await axios.delete("api/cookieclear");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
