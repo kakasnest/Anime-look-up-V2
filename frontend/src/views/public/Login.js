@@ -4,6 +4,7 @@ import axios from "axios";
 
 import useUser from "../../hooks/useUser.js";
 import { loginURL } from "../../request_constants/public.js";
+import { successfulLoginMessage } from "../../response_constants/public.js";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -22,7 +23,7 @@ const Login = () => {
         data: { message },
       } = await axios.post(loginURL, user);
       setResponseMessage(message);
-      if (message === "Login successful") login();
+      if (message === successfulLoginMessage) login();
     } catch (err) {
       console.log(err.message);
     }

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 import { registerURL } from "../../request_constants/public.js";
+import { successfulRegisterMessage } from "../../response_constants/public.js";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -33,7 +34,7 @@ const Register = () => {
     setPassword(e.target.value);
   };
 
-  if (responseMessage === "Registration complete") {
+  if (responseMessage === successfulRegisterMessage) {
     return <div>Registration complete</div>;
   }
 
