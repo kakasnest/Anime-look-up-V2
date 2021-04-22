@@ -4,6 +4,8 @@ import axios from "axios";
 import NavBar from "./views/Navbar.js";
 import Container from "./views/Container.js";
 import useUser from "./hooks/useUser.js";
+import { loggedInCheckURL } from "./request_constants/private.js";
+import { csrfURL } from "./request_constants/public.js";
 
 import "./App.css";
 
@@ -14,7 +16,7 @@ const App = () => {
     try {
       const {
         data: { csrfToken },
-      } = await axios.get("/api/csrf-protection");
+      } = await axios.get(csrfURL);
 
       axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
     } catch (err) {
@@ -26,7 +28,7 @@ const App = () => {
     try {
       const {
         data: { message },
-      } = await axios.get("/api/isuserloggedin");
+      } = await axios.get(loggedInCheckURL);
     } catch (err) {
       console.log(err.message);
       logout();

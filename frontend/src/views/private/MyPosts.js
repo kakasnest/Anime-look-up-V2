@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { createPostURL } from "../../request_constants/private.js";
+
 const MyPosts = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -14,7 +16,7 @@ const MyPosts = () => {
     try {
       const {
         data: { created },
-      } = await axios.post("/api/posts", post);
+      } = await axios.post(createPostURL, post);
       post = created;
     } catch (err) {
       console.log(err.message);

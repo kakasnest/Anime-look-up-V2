@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 import useUser from "../../hooks/useUser.js";
+import { loginURL } from "../../request_constants/public.js";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -19,7 +20,7 @@ const Login = () => {
     try {
       const {
         data: { message },
-      } = await axios.post("/api/login", user);
+      } = await axios.post(loginURL, user);
       setResponseMessage(message);
       if (message === "Login successful") login();
     } catch (err) {

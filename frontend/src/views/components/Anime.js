@@ -1,10 +1,6 @@
 import React from "react";
 
-import { useFavourites } from "../../../hooks/useFavourites";
-
 const Anime = ({ anime }) => {
-  const { favourites, add, remove } = useFavourites();
-
   return (
     <div className="anime">
       <img
@@ -23,16 +19,6 @@ const Anime = ({ anime }) => {
         </div>
         <div className="anime-detail">Episodes: {anime.episodes}</div>
         <div className="anime-detail">Type: {anime.type}</div>
-      </div>
-      <div>
-        <button
-          className="anime-like"
-          onClick={
-            favourites.includes(anime) ? () => remove(anime) : () => add(anime)
-          }
-        >
-          {favourites.includes(anime) ? <FcLike /> : <FcLikePlaceholder />}
-        </button>
       </div>
     </div>
   );

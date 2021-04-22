@@ -3,12 +3,12 @@ import React, { Suspense } from "react";
 
 import useUser from "../hooks/useUser.js";
 
-const Home = React.lazy(() => import("./components/Home.js"));
-const Login = React.lazy(() => import("./components/Login.js"));
-const Register = React.lazy(() => import("./components/Register.js"));
-const Profile = React.lazy(() => import("./components/Profile.js"));
-const Posts = React.lazy(() => import("./components/Posts.js"));
-const MyPosts = React.lazy(() => import("./components/MyPosts.js"));
+const Home = React.lazy(() => import("./public/Home.js"));
+const Login = React.lazy(() => import("./public/Login.js"));
+const Register = React.lazy(() => import("./public/Register.js"));
+const Profile = React.lazy(() => import("./private/Profile.js"));
+const Posts = React.lazy(() => import("./public/Posts.js"));
+const MyPosts = React.lazy(() => import("./private/MyPosts.js"));
 
 const Container = () => {
   const { isAuthenticated } = useUser();

@@ -1,15 +1,16 @@
 import React from "react";
 
-import Anime from ".anime/Anime.js";
+import anime from "../components/Anime.js";
 
-const AnimeList = ({ anime }) => {
-  return (
+const Home = () => {
+  return <div>hello on home</div>;
+  /*  return (
     <div className="anime-list">
       {anime.map((animeObject) => (
         <Anime key={animeObject.url} anime={animeObject} />
       ))}
     </div>
-  );
+  ); */
 };
 
-export default AnimeList;
+export default Home;

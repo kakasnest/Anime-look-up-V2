@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+import { registerURL } from "../../request_constants/public.js";
+
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +18,7 @@ const Register = () => {
     try {
       const {
         data: { message },
-      } = await axios.post("/api/register", user);
+      } = await axios.post(registerURL, user);
       setResponseMessage(message);
     } catch (err) {
       console.log(err.message);

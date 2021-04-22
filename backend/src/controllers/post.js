@@ -29,12 +29,13 @@ export const getUserPosts = async (req, res) => {
 };
 
 export const editPost = async (req, res) => {
-  const data = req.body;
+  const { title, content } = req.body;
 
   try {
     const editedPost = await Post.findByIdAndUpdate(
-      { _id: req.params.postID },
-      data
+      { _id: req.params.id },
+      { title, content },
+      { new: true }
     );
     res.status(200).json(editedPost);
   } catch (err) {
