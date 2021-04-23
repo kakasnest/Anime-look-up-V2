@@ -12,12 +12,25 @@ import "./App.css";
 const App = () => {
   const { logout } = useUser();
 
+  axios.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    function (err) {
+      if (
+        err.response.data.message.name === "TokenExpiredError" ||
+        err.response.data.message.name === "JsonWebTokenError"
+      )
+        logout();
+      return Promise.reject(err);
+    }
+  );
+
   const getCsrfProtection = async () => {
     try {
       const {
         data: { csrfToken },
       } = await axios.get(csrfURL);
-
       axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
     } catch (err) {
       console.log(err.message);
@@ -31,7 +44,6 @@ const App = () => {
       } = await axios.get(loggedInCheckURL);
     } catch (err) {
       console.log(err.message);
-      logout();
     }
   };
 

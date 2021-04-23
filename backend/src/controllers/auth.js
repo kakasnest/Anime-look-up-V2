@@ -10,7 +10,7 @@ export const register = async (req, res) => {
     const user = await User.findOne({ username });
 
     if (user) {
-      res.status(200).json({ message: "Username already in use" });
+      res.status(500).json({ message: "Username already in use" });
     } else {
       const hashed = await bcrypt.hash(password, 10);
       const created = await User.create({ username, password: hashed });
@@ -27,11 +27,13 @@ export const login = async (req, res, next) => {
     const user = await User.findOne({ username }).select("+password");
 
     if (!user) {
-      res.status(200).json({ message: "No such user" });
+      res
+        .status(500)
+        .json({ message: "There isn't a user with such a username" });
     } else {
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
-        res.status(200).json({ message: "Wrong password" });
+        res.status(500).json({ message: "Wrong password" });
       } else {
         const token = jwt.sign({ userId: user._id }, TOKEN_SECRET, {
           expiresIn: "7d",

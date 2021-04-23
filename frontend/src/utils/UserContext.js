@@ -22,7 +22,7 @@ export const UserProvider = (props) => {
         } = await axios.delete(cookieClearURL);
       }
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
   };
 

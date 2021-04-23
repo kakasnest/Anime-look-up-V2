@@ -4,7 +4,11 @@ import axios from "axios";
 
 import useUser from "../../hooks/useUser.js";
 import { loginURL } from "../../request_constants/public.js";
-import { successfulLoginMessage } from "../../response_constants/public.js";
+import {
+  successfulLoginMessage,
+  usernameNotExistMessage,
+  wrongPasswordMessage,
+} from "../../response_constants/public.js";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -25,6 +29,11 @@ const Login = () => {
       setResponseMessage(message);
       if (message === successfulLoginMessage) login();
     } catch (err) {
+      if (
+        err.response.data.message === usernameNotExistMessage ||
+        err.response.data.message === wrongPasswordMessage
+      )
+        setResponseMessage(err.response.data.message);
       console.log(err.message);
     }
   };
@@ -57,7 +66,7 @@ const Login = () => {
           onChange={handlePassword}
         />
       </div>
-      <button>Login</button>
+      <button disabled={username === "" || password === ""}>Login</button>
       <NavLink to="/register">Not a member yet? Register here</NavLink>
       {responseMessage}
     </form>

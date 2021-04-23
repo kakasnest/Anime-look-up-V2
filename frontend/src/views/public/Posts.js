@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { getPostsURL } from "../../request_constants/public.js";
+import Post from "../components/Post.js";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const { data } = await axios.get(getPostsURL);
-    console.log(data);
-    setPosts([...posts, data]);
+    try {
+      const { data } = await axios.get(getPostsURL);
+      setPosts(data);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   useEffect(() => {
@@ -18,7 +22,12 @@ const Posts = () => {
 
   return (
     <div>
-      Hello<div>hello</div>
+      Hello
+      <div>
+        {posts.map((post) => (
+          <Post key={post._id} post={post} className="Post" />
+        ))}
+      </div>
     </div>
   );
 };

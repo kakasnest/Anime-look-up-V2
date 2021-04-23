@@ -3,7 +3,10 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 import { registerURL } from "../../request_constants/public.js";
-import { successfulRegisterMessage } from "../../response_constants/public.js";
+import {
+  successfulRegisterMessage,
+  usernameTakenMessage,
+} from "../../response_constants/public.js";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -22,6 +25,8 @@ const Register = () => {
       } = await axios.post(registerURL, user);
       setResponseMessage(message);
     } catch (err) {
+      if (err.response.data.message === usernameTakenMessage)
+        setResponseMessage(err.response.data.message);
       console.log(err.message);
     }
   };
@@ -58,7 +63,7 @@ const Register = () => {
           onChange={handlePassword}
         />
       </div>
-      <button>Register</button>
+      <button disabled={username === "" || password === ""}>Register</button>
       <NavLink to="/login">A member already? Login here</NavLink>
       {responseMessage}
     </form>
