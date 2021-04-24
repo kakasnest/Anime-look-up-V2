@@ -24,9 +24,11 @@ const Posts = () => {
     <div>
       Hello
       <div>
-        {posts.map((post) => (
-          <Post key={post._id} post={post} className="Post" />
-        ))}
+        {posts
+          .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+          .map((post) => (
+            <Post key={post._id} post={post} className="Post" />
+          ))}
       </div>
     </div>
   );

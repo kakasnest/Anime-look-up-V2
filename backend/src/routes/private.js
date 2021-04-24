@@ -5,7 +5,6 @@ import {
   getUserPosts,
   editPost,
   deletePost,
-  getPost,
 } from "../controllers/post.js";
 import { isUserLoggedIn } from "../controllers/other.js";
 import authMW from "../middlewares/authMW.js";
@@ -17,7 +16,6 @@ router.use(authMW);
 //Gets
 router.route("/isuserloggedin").get(isUserLoggedIn);
 router.route("/userposts").get(getUserPosts);
-router.route("/posts/:id").get(getPost);
 
 //Posts
 router.route("/posts").post(createPost);

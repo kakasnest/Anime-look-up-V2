@@ -90,8 +90,19 @@ const MyPosts = () => {
     <div>
       hello<div>from my posts</div>
       <form onSubmit={id === "" ? handlePost : handleEditedPost}>
-        <input type="text" onChange={handleTitle} value={title} />
-        <input type="text" onChange={handleContent} value={content} />
+        <input
+          type="text"
+          onChange={handleTitle}
+          value={title}
+          maxLength={50}
+          minLength={4}
+        />
+        <input
+          type="text"
+          onChange={handleContent}
+          value={content}
+          maxLength={200}
+        />
         <button disabled={title === ""}>
           {id === "" ? "Post" : "Finish editing"}
         </button>
@@ -100,15 +111,17 @@ const MyPosts = () => {
       <div>
         These are my posts
         <div>
-          {posts.map((post) => (
-            <UserPost
-              key={post._id}
-              post={post}
-              handleEdit={() => handleEdit(post._id)}
-              handleDelete={() => handleDelete(post._id)}
-              className="Post"
-            />
-          ))}
+          {posts
+            .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+            .map((post) => (
+              <UserPost
+                key={post._id}
+                post={post}
+                handleEdit={() => handleEdit(post._id)}
+                handleDelete={() => handleDelete(post._id)}
+                className="Post"
+              />
+            ))}
         </div>
       </div>
     </div>

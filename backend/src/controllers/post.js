@@ -12,7 +12,7 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().populate("createdBy");
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -47,15 +47,6 @@ export const deletePost = async (req, res) => {
   try {
     const deletedPost = await Post.findByIdAndDelete({ _id: req.params.id });
     res.status(200).json(deletedPost);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-export const getPost = async (req, res) => {
-  try {
-    const post = await Post.find({ _id: req.params.id });
-    res.status(200).json(post);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
