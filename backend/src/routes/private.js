@@ -8,6 +8,7 @@ import {
 } from "../controllers/post.js";
 import { isUserLoggedIn } from "../controllers/other.js";
 import authMW from "../middlewares/authMW.js";
+import { getUserData } from "../controllers/user.js";
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.use(authMW);
 //Gets
 router.route("/isuserloggedin").get(isUserLoggedIn);
 router.route("/userposts").get(getUserPosts);
+router.route("/user").get(getUserData);
 
 //Posts
 router.route("/posts").post(createPost);

@@ -47,29 +47,21 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username</label>
-        <input
-          type="text"
-          maxLength={20}
-          minLength={6}
-          onChange={handleUsername}
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          maxLength={20}
-          minLength={6}
-          onChange={handlePassword}
-        />
-      </div>
-      <button disabled={username === "" || password === ""}>Login</button>
-      <NavLink to="/register">Not a member yet? Register here</NavLink>
-      {responseMessage}
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Username</label>
+          <input type="text" maxLength={20} onChange={handleUsername} />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" maxLength={20} onChange={handlePassword} />
+        </div>
+        <button disabled={username === "" || password === ""}>Login</button>
+        <NavLink to="/register">Not a member yet? Register here</NavLink>
+        {responseMessage}
+      </form>
+    </div>
   );
 };
 

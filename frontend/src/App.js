@@ -50,6 +50,7 @@ const App = () => {
   useEffect(() => {
     getCsrfProtection();
     checkCookie();
+    document.title = "Anime-Look-Up V2";
   }, []);
 
   return (

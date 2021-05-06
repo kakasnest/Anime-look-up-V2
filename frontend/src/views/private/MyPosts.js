@@ -69,7 +69,7 @@ const MyPosts = () => {
       const {
         data: { created },
       } = await axios.post(createPostURL, post);
-      post = { created };
+      cancelEdit();
     } catch (err) {
       console.log(err.message);
     }
@@ -81,6 +81,7 @@ const MyPosts = () => {
       const {
         data: { editedPost },
       } = await axios.put(putPostURL + `/${id}`, post);
+      cancelEdit();
     } catch (err) {
       console.log(err.message);
     }
