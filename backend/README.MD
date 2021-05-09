@@ -87,5 +87,5 @@ Basic URL at this point: `http://localhost:5000/api/private`
 
 1. route: `/userposts`
 
-- body:
-- response:
+- body: from the jwt token - trough a middleware - a userid is attached to the body if authenticated
+- response: returns the posts of the user in json format

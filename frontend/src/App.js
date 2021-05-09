@@ -38,19 +38,8 @@ const App = () => {
     }
   };
 
-  const checkCookie = async () => {
-    try {
-      const {
-        data: { message },
-      } = await basicAPI.get(loggedInCheckURL);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-
   useEffect(() => {
     getCsrfProtection();
-    checkCookie();
     document.title = "Anime-Look-Up V2";
   }, []);
 
