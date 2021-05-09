@@ -192,6 +192,21 @@ body {
   flex: 1;
 }
 
+.Post button {
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  background: rgba(0, 136, 169, 1);
+  transition: all 0.3s ease 0s;
+  padding: 5px;
+  color: ghostwhite;
+  margin: 5px;
+}
+
+.Post button:hover {
+  background: rgba(0, 136, 169, 0.75);
+}
+
 .Post h1,
 h2,
 h3,
