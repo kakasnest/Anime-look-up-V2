@@ -6,13 +6,14 @@ import Container from "./views/Container.js";
 import useUser from "./hooks/useUser.js";
 import { loggedInCheckURL } from "./request_constants/private.js";
 import { csrfURL } from "./request_constants/public.js";
+import { basicAPI } from "./utils/AxiosInstances.js";
 
 import "./App.css";
 
 const App = () => {
   const { logout } = useUser();
 
-  axios.interceptors.response.use(
+  basicAPI.interceptors.response.use(
     function (response) {
       return response;
     },
@@ -31,7 +32,7 @@ const App = () => {
       const {
         data: { csrfToken },
       } = await axios.get(csrfURL);
-      axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
+      basicAPI.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
     } catch (err) {
       console.log(err.message);
     }
@@ -41,7 +42,7 @@ const App = () => {
     try {
       const {
         data: { message },
-      } = await axios.get(loggedInCheckURL);
+      } = await basicAPI.get(loggedInCheckURL);
     } catch (err) {
       console.log(err.message);
     }

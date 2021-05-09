@@ -8,6 +8,7 @@ import {
   successfulRegisterMessage,
   usernameTakenMessage,
 } from "../../response_constants/public.js";
+import { basicAPI } from "../../utils/AxiosInstances.js";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -23,7 +24,7 @@ const Register = () => {
     try {
       const {
         data: { message },
-      } = await axios.post(registerURL, user);
+      } = await basicAPI.post(registerURL, user);
       setResponseMessage(message);
     } catch (err) {
       if (err.response.data.message === usernameTakenMessage)

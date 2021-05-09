@@ -10,6 +10,7 @@ import {
   usernameNotExistMessage,
   wrongPasswordMessage,
 } from "../../response_constants/public.js";
+import { basicAPI } from "../../utils/AxiosInstances.js";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -26,7 +27,7 @@ const Login = () => {
     try {
       const {
         data: { message },
-      } = await axios.post(loginURL, user);
+      } = await basicAPI.post(loginURL, user);
       setResponseMessage(message);
       if (message === successfulLoginMessage) login();
     } catch (err) {

@@ -3,13 +3,14 @@ import axios from "axios";
 
 import { getPostsURL } from "../../request_constants/public.js";
 import Post from "../components/Post.js";
+import { basicAPI } from "../../utils/AxiosInstances.js";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
     try {
-      const { data } = await axios.get(getPostsURL);
+      const { data } = await basicAPI.get(getPostsURL);
       setPosts(data);
     } catch (err) {
       console.log(err.message);

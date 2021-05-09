@@ -3,6 +3,7 @@ import axios from "axios";
 
 import useUser from "../../hooks/useUser.js";
 import { getUserDataURL } from "../../request_constants/private.js";
+import { basicAPI } from "../../utils/AxiosInstances.js";
 
 const Profile = () => {
   const { logout } = useUser();
@@ -10,7 +11,7 @@ const Profile = () => {
 
   const getUserData = async () => {
     try {
-      const { data } = await axios.get(getUserDataURL);
+      const { data } = await basicAPI.get(getUserDataURL);
       setUser(data[0]);
     } catch (err) {
       console.log(err.message);

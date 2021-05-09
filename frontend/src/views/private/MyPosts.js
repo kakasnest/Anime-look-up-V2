@@ -8,6 +8,7 @@ import {
   putPostURL,
 } from "../../request_constants/private.js";
 import UserPost from "../components/UserPost.js";
+import { basicAPI } from "../../utils/AxiosInstances.js";
 
 const MyPosts = () => {
   const [title, setTitle] = useState("");
@@ -21,7 +22,7 @@ const MyPosts = () => {
 
   const getUserPosts = async () => {
     try {
-      const { data } = await axios.get(getUserPostsURL);
+      const { data } = await basicAPI.get(getUserPostsURL);
       setPosts(data);
     } catch (err) {
       console.log(err.message);
@@ -57,7 +58,7 @@ const MyPosts = () => {
     try {
       const {
         data: { deletedPost },
-      } = await axios.delete(deletePostURL + `/${id}`);
+      } = await basicAPI.delete(deletePostURL + `/${id}`);
       getUserPosts();
     } catch (err) {
       console.log(err.message);
@@ -69,7 +70,7 @@ const MyPosts = () => {
     try {
       const {
         data: { created },
-      } = await axios.post(createPostURL, post);
+      } = await basicAPI.post(createPostURL, post);
       cancelEdit();
       getUserPosts();
     } catch (err) {
@@ -82,7 +83,7 @@ const MyPosts = () => {
     try {
       const {
         data: { editedPost },
-      } = await axios.put(putPostURL + `/${id}`, post);
+      } = await basicAPI.put(putPostURL + `/${id}`, post);
       cancelEdit();
       getUserPosts();
     } catch (err) {

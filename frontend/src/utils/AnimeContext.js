@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
-import axios from "axios";
+
+import { outerAPI } from "./AxiosInstances.js";
 
 export const AnimeContext = createContext();
 
@@ -9,7 +10,7 @@ export const AnimeProvider = (props) => {
   const load = async (page) => {
     const {
       data: { results },
-    } = await axios(`${process.env.REACT_APP_API_URL}${page}`);
+    } = await outerAPI(`${process.env.REACT_APP_API_URL}${page}`);
     setAnime(results);
   };
 

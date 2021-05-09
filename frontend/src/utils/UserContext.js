@@ -3,6 +3,7 @@ import axios from "axios";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import { cookieClearURL } from "../request_constants/public.js";
+import { basicAPI } from "./AxiosInstances";
 
 const UserContext = createContext();
 
@@ -19,7 +20,7 @@ export const UserProvider = (props) => {
       if (values) {
         const {
           data: { message },
-        } = await axios.delete(cookieClearURL);
+        } = await basicAPI.delete(cookieClearURL);
       }
     } catch (err) {
       console.log(err.message);
