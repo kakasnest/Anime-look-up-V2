@@ -37,4 +37,4 @@ npm install
 npm run start
 ```
 
-Aslo don't forget to rename .env file in the frontend (public api was used).
+Aslo don't forget to rename `frontend/.env.temp`(public api was used so it's already filled).
