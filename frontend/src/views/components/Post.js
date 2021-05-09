@@ -1,12 +1,20 @@
 import React from "react";
 
 const Post = ({ post }) => {
+  const options = { month: "long" };
+  const date = new Date(post.createdAt);
+  const year = date.getFullYear();
+  const month = new Intl.DateTimeFormat("hu-HU", options).format(
+    date.getMonth()
+  );
+  const day = date.getDate();
+
   return (
-    <div>
-      <div>{post.createdBy.username}</div>
-      <div>{post.title}</div>
-      <div>{post.createdAt}</div>
-      <div>{post.content}</div>
+    <div className="Post">
+      <h1>{post.title}</h1>
+      <h2>{post.createdBy.username}</h2>
+      <h3>{post.content}</h3>
+      <h4>{`${year}. ${month} ${day}`}</h4>
     </div>
   );
 };

@@ -58,6 +58,7 @@ const MyPosts = () => {
       const {
         data: { deletedPost },
       } = await axios.delete(deletePostURL + `/${id}`);
+      getUserPosts();
     } catch (err) {
       console.log(err.message);
     }
@@ -70,6 +71,7 @@ const MyPosts = () => {
         data: { created },
       } = await axios.post(createPostURL, post);
       cancelEdit();
+      getUserPosts();
     } catch (err) {
       console.log(err.message);
     }
@@ -82,6 +84,7 @@ const MyPosts = () => {
         data: { editedPost },
       } = await axios.put(putPostURL + `/${id}`, post);
       cancelEdit();
+      getUserPosts();
     } catch (err) {
       console.log(err.message);
     }
@@ -89,7 +92,6 @@ const MyPosts = () => {
 
   return (
     <div>
-      hello<div>from my posts</div>
       <form onSubmit={id === "" ? handlePost : handleEditedPost}>
         <input
           type="text"
@@ -110,8 +112,8 @@ const MyPosts = () => {
         {id === "" ? "" : <button onClick={cancelEdit}>Stop editing</button>}
       </form>
       <div>
-        These are my posts
-        <div>
+        <h1 className="TitleContainer">My posts</h1>
+        <div className="Posts">
           {posts
             .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
             .map((post) => (

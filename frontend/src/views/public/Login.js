@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { FaUserAlt, FaLock } from "react-icons/fa";
 
 import useUser from "../../hooks/useUser.js";
 import { loginURL } from "../../request_constants/public.js";
@@ -47,21 +48,32 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input type="text" maxLength={20} onChange={handleUsername} />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" maxLength={20} onChange={handlePassword} />
-        </div>
-        <button disabled={username === "" || password === ""}>Login</button>
-        <NavLink to="/register">Not a member yet? Register here</NavLink>
-        {responseMessage}
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="LoginBox">
+      <h1>Login</h1>
+      <div className="TextField">
+        <FaUserAlt className="UserIcon" />
+        <input
+          type="text"
+          maxLength={20}
+          onChange={handleUsername}
+          placeholder="Username"
+        />
+      </div>
+      <div className="TextField">
+        <FaLock className="PasswordIcon" />
+        <input
+          type="password"
+          maxLength={20}
+          onChange={handlePassword}
+          placeholder="Password"
+        />
+      </div>
+      <button disabled={username === "" || password === ""}>Login</button>
+      <NavLink to="/register" className="LoginLink">
+        Not a member yet? Register here
+      </NavLink>
+      <div className="ResponseMessage">{responseMessage}</div>
+    </form>
   );
 };
 

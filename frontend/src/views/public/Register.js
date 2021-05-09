@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { FaUserAlt, FaLock } from "react-icons/fa";
 
 import { registerURL } from "../../request_constants/public.js";
 import {
@@ -40,32 +41,37 @@ const Register = () => {
   };
 
   if (responseMessage === successfulRegisterMessage) {
-    return <div>Registration complete</div>;
+    return <div className="RegComplete">Registration complete</div>;
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username</label>
+    <form onSubmit={handleSubmit} className="LoginBox">
+      <h1>Register</h1>
+      <div className="TextField">
+        <FaUserAlt className="UserIcon" />
         <input
           type="text"
           maxLength={20}
           minLength={6}
           onChange={handleUsername}
+          placeholder="Username"
         />
       </div>
-      <div>
-        <label>Password</label>
+      <div className="TextField">
+        <FaLock className="PasswordIcon" />
         <input
           type="password"
           maxLength={20}
           minLength={6}
           onChange={handlePassword}
+          placeholder="Password"
         />
       </div>
       <button disabled={username === "" || password === ""}>Register</button>
-      <NavLink to="/login">A member already? Login here</NavLink>
-      {responseMessage}
+      <NavLink to="/login" className="LoginLink">
+        A member already? Login here
+      </NavLink>
+      <div className="ResponseMessage">{responseMessage}</div>
     </form>
   );
 };

@@ -22,8 +22,8 @@ const Posts = () => {
 
   return (
     <div>
-      Hello
-      <div>
+      <h1 className="TitleContainer">Posts</h1>
+      <div className="Posts">
         {posts
           .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
           .map((post) => (
