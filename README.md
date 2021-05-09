@@ -13,6 +13,8 @@ Backend uses Express and MongoDB and NodeJS while the frontend is built using Re
 - CSURF (backend)
 - JWT (backend)
 - Bcrypt (backend)
+- React Router (frontend)
+- ErrorBoundary (frontend)
 
 MongoDB is being used with it's cloud version ([MongoDB_Atlas](https://cloud.mongodb.com/)).
 

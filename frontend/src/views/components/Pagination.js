@@ -6,25 +6,23 @@ import {
 } from "react-icons/fa";
 import useAnime from "../../hooks/useAnime";
 
-const Pagination = ({ pageCounter }) => {
+const Pagination = ({ pageCounter, setPageCounter }) => {
   const { load } = useAnime();
 
   const leftMove = () => {
-    const nextPage = Math.max(1, pageCounter - 1);
-    load(nextPage);
+    setPageCounter(Math.max(1, pageCounter - 1));
   };
 
   const rightMove = () => {
-    const nextPage = Math.min(357, pageCounter + 1);
-    load(nextPage);
+    setPageCounter(Math.min(357, pageCounter + 1));
   };
 
   const firstPage = () => {
-    load(1);
+    setPageCounter(1);
   };
 
   const lastPage = () => {
-    load(357);
+    setPageCounter(357);
   };
 
   return (

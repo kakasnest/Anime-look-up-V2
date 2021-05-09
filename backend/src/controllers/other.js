@@ -1,16 +1,32 @@
 export const heartbeat = (req, res) => {
-  res.json({ connection: "true" });
+  try {
+    res.json({ connection: "true" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 export const csrfProtection = (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
+  try {
+    res.json({ csrfToken: req.csrfToken() });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 export const cookieClear = (req, res) => {
-  res.clearCookie("auth");
-  res.json({ message: "Auth cookie has been cleared from the browser" });
+  try {
+    res.clearCookie("auth");
+    res.json({ message: "Auth cookie has been cleared from the browser" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 export const isUserLoggedIn = (req, res) => {
-  res.json({ message: "User is logged in" });
+  try {
+    res.json({ message: "User is logged in" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
