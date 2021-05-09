@@ -156,6 +156,8 @@ On Success you will see something like this:
 - request parameter: id (necessary)
 - response: deleted post in json format
 
+On Success you will see something like this:
+
 ```json
 {
   "content": "Some deleted post",
