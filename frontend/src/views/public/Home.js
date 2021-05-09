@@ -9,10 +9,13 @@ const Home = () => {
   useEffect(() => load(1), []);
 
   return (
-    <div className="AnimeList">
-      {anime.map((animeObject) => (
-        <Anime key={animeObject.url} anime={animeObject} />
-      ))}
+    <div className="Home">
+      <h1>Popular anime you might want to check!</h1>
+      <div className="AnimeList">
+        {anime.map((anime) => (
+          <Anime key={anime.url} anime={anime} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -233,3 +233,43 @@ h4 {
 .CreatePostForm input {
   background-color: ghostwhite;
 }
+
+/* <Home /> */
+
+.Home {
+  padding: 10px;
+}
+
+.Home h1 {
+  font-weight: 500;
+}
+
+.AnimeList {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.Anime {
+  background-color: ghostwhite;
+  color: rgba(0, 136, 169, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 225px;
+  min-height: 337px;
+  border: 2px solid rgba(0, 136, 169, 1);
+  border-radius: 50px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.Anime * {
+  padding: 5px;
+}
+
+.Anime .AnimeTitle {
+  text-align: center;
+}
