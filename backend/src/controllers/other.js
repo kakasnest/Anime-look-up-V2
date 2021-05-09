@@ -22,11 +22,3 @@ export const cookieClear = (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
-export const isUserLoggedIn = (req, res) => {
-  try {
-    res.json({ message: "User is logged in" });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};

@@ -20,7 +20,7 @@ On Success you will see something like this:
 { "connection": true }
 ```
 
-2. route: `/public/posts`
+2. route: `/posts`
 
 - body: not required to have any attached data
 - response: returns every post stored in the database
@@ -31,7 +31,7 @@ On Success you will see something like this:
 {[{"_id": "6098140882ae6d2fe0289fcd", "title": "Hello there!", "content": "GENERAL KENOBI!", "createdAt": "2021-05-09T16:55:36.299Z", "createdBy": {"_id": "609806c582ae6d2fe0289fcc", "username": "GeneralKenobi", "__v": 0}}, ...]}
 ```
 
-3. route: `/public/csrf-protection`
+3. route: `/csrf-protection`
 
 - body: not required to have any attached data
 - response: csrf token in json format
@@ -80,3 +80,12 @@ On Success you will see something like this:
 ```
 
 ## Private Routes
+
+Basic URL at this point: `http://localhost:5000/api/private`
+
+### Get
+
+1. route: `/userposts`
+
+- body:
+- response:
