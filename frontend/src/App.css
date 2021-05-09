@@ -29,7 +29,7 @@ body {
 
 .Header * {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   text-decoration: none;
   transition: all 0.3s ease 0s;
   display: inline;
@@ -160,10 +160,13 @@ body {
 }
 
 /* <Posts />, <MyPosts /> */
+.PostsTitle {
+  padding: 20px;
+}
+
 .Posts {
   height: 100%;
   width: 100%;
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -172,30 +175,31 @@ body {
 
 .Post {
   color: rgb(9, 9, 34);
-  width: calc(33% - 10px);
-  overflow: hidden;
   border: solid 3px #0088a9;
   background-color: ghostwhite;
   border-radius: 6px;
   margin: 15px 15px;
+  padding: 10px;
+  width: 360px;
+  min-height: 250px;
   overflow-wrap: break-word;
 }
 
-.Post h2,
+.Post h1,
+h2,
 h3,
 h4 {
-  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.Post h1 {
-  font-weight: 500;
+.CreatePostForm {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Others */
-
-.TitleContainer {
-  position: absolute;
-  left: 43%;
-  margin-bottom: 30px;
-  font-weight: 500;
+.CreatePostForm * {
+  font-size: 16px;
+  margin: 5px;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaUserAlt } from "react-icons/fa";
 
 const Post = ({ post }) => {
   const options = { month: "long" };
@@ -12,7 +13,10 @@ const Post = ({ post }) => {
   return (
     <div className="Post">
       <h1>{post.title}</h1>
-      <h2>{post.createdBy.username}</h2>
+      <h2>
+        <FaUserAlt />
+        {` ${post.createdBy.username}`}
+      </h2>
       <h3>{post.content}</h3>
       <h4>{`${year}. ${month} ${day}`}</h4>
     </div>

@@ -92,19 +92,24 @@ const MyPosts = () => {
 
   return (
     <div>
-      <form onSubmit={id === "" ? handlePost : handleEditedPost}>
+      <form
+        onSubmit={id === "" ? handlePost : handleEditedPost}
+        className="CreatePostForm"
+      >
         <input
           type="text"
           onChange={handleTitle}
           value={title}
           maxLength={50}
           minLength={4}
+          placeholder="Super Creative Title"
         />
         <input
           type="text"
           onChange={handleContent}
           value={content}
           maxLength={200}
+          placeholder="Your Story"
         />
         <button disabled={title === ""}>
           {id === "" ? "Post" : "Finish editing"}
@@ -112,7 +117,7 @@ const MyPosts = () => {
         {id === "" ? "" : <button onClick={cancelEdit}>Stop editing</button>}
       </form>
       <div>
-        <h1 className="TitleContainer">My posts</h1>
+        <h1 className="PostsTitle">My posts</h1>
         <div className="Posts">
           {posts
             .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
