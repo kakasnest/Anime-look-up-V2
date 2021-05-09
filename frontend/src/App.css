@@ -162,6 +162,7 @@ body {
 /* <Posts />, <MyPosts /> */
 .PostsTitle {
   padding: 20px;
+  font-weight: 500;
 }
 
 .Posts {
@@ -183,6 +184,12 @@ body {
   width: 360px;
   min-height: 250px;
   overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+}
+
+.Post * {
+  flex: 1;
 }
 
 .Post h1,
