@@ -27,7 +27,9 @@ const Profile = () => {
       <br />
       {`(UUID: ${user._id})`}
       <br />
-      <button onClick={logout}>Logout</button>
+      <button onClick={logout} className="LogOutButton">
+        Logout
+      </button>
     </div>
   );
 };

@@ -5,13 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import ErrorBoundary from "./ErrorBoundary.js";
 import App from "./App";
 import { UserProvider } from "./utils/UserContext.js";
+import { AnimeProvider } from "./utils/AnimeContext.js";
 
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
         <UserProvider>
-          <App />
+          <AnimeProvider>
+            <App />
+          </AnimeProvider>
         </UserProvider>
       </BrowserRouter>
     </ErrorBoundary>

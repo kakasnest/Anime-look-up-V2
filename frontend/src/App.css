@@ -159,7 +159,7 @@ body {
   color: ghostwhite;
 }
 
-/* <Posts />, <MyPosts /> */
+/* <Posts />, <MyPosts />  - logout button also edited here */
 .PostsTitle {
   padding: 20px;
   font-weight: 500;
@@ -192,7 +192,9 @@ body {
   flex: 1;
 }
 
-.Post button {
+.Post button,
+.LogOutButton,
+.CreatePostForm button {
   cursor: pointer;
   border: none;
   border-radius: 50px;
@@ -203,7 +205,9 @@ body {
   margin: 5px;
 }
 
-.Post button:hover {
+.Post button:hover,
+.LogOutButton:hover,
+.CreatePostForm button:hover {
   background: rgba(0, 136, 169, 0.75);
 }
 
