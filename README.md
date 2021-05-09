@@ -36,3 +36,5 @@ cp backend/.env.temp backend/.env
 npm install
 npm run start
 ```
+
+Aslo don't forget to rename .env file in the frontend (public api was used).
