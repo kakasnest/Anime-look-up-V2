@@ -9,7 +9,12 @@ const Anime = ({ anime }) => {
         <div>Score on MyAnimeList: {anime.score}</div>
         <div>
           Synopsis: {anime.synopsis}
-          <a href={anime.url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={anime.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="AnimeLink"
+          >
             link
           </a>
         </div>
