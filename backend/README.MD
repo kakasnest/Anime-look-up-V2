@@ -89,3 +89,80 @@ Basic URL at this point: `http://localhost:5000/api/private`
 
 - body: from the jwt token - trough a middleware - a userid is attached to the body if authenticated
 - response: returns the posts of the user in json format
+
+On Success you will see something like this:
+
+```json
+{"_id": "6097da764286ac11ac79e06e", "title": "Super creative story", "content": "Thanks!", ...}
+```
+
+2. route: `/user`
+
+- body: from the jwt token - trough a middleware - a userid is attached to the body if authenticated
+- response: returns a user with the corresponding username and id
+
+On Success you will see something like this:
+
+```json
+{ "_id": "6083f0878b204d2f2092b0bc", "username": "GeneralKenobi", "__v": 0 }
+```
+
+### Post
+
+1. route: `/posts`
+
+- body: json, {title, content}, from the jwt token - trough a middleware - a userid is attached to the body if authenticated
+- response: created post in json format
+
+On Success you will see something like this:
+
+```json
+{
+  "content": "Hello There!",
+  "createdAt": "2021-05-09T21:38:27.382Z",
+  "createdBy": "6083f0878b204d2f2092b0bc",
+  "title": "Here again",
+  "__v": 0,
+  "_id": "60985653e6f88d33a84c9c2e"
+}
+```
+
+### Put
+
+1. route: `posts/:id`
+
+- body: json, {title, content}
+- request parameter: id (necessary)
+- response: edited post in json format
+
+On Success you will see something like this:
+
+```json
+{
+  "content": "Some cool story",
+  "createdAt": "2021-05-09T21:31:17.098Z",
+  "createdBy": "6083f0878b204d2f2092b0bc",
+  "title": "That's really cool",
+  "__v": 0,
+  "_id": "609854a50b84c025f4507c6d"
+}
+```
+
+### Delete
+
+1. route: `posts/:id`
+
+- body: not required to have any attached data
+- request parameter: id (necessary)
+- response: deleted post in json format
+
+```json
+{
+  "content": "Some deleted post",
+  "createdAt": "2021-05-09T21:40:28.226Z",
+  "createdBy": "6083f0878b204d2f2092b0bc",
+  "title": "Deleted",
+  "__v": 0,
+  "_id": "609856cce6f88d33a84c9c2f"
+}
+```

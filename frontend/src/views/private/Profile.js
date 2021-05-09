@@ -12,7 +12,7 @@ const Profile = () => {
   const getUserData = async () => {
     try {
       const { data } = await basicAPI.get(getUserDataURL);
-      setUser(data[0]);
+      setUser(data);
     } catch (err) {
       console.log(err.message);
     }
