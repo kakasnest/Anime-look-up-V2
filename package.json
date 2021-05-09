@@ -9,6 +9,6 @@
     "install": "concurrently \"npm run client:install\" \"npm run server:install\""
   },
   "dependencies": {
-    "concurrently": "^6.0.0"
+    "concurrently": "^6.1.0"
   }
 }
